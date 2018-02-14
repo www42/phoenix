@@ -1,5 +1,5 @@
 # Create container cluster
-https://docs.microsoft.com/en-us/azure/container-service/kubernetes/container-service-kubernetes-walkthrough
+https://docs.microsoft.com/en-us/azure/aks/
 
 **Hint:** The "set KEY value" values commands work in Powershell. In Bash use KEY=value.
 
@@ -18,24 +18,46 @@ KUBE_GROUP=myKubeRG
 az group create -n $KUBE_GROUP -l $LOCATION
 ```
 
-2. Create the acs cluster
+2. Create the aks cluster
+https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-deploy-cluster
 ```
+az provider register -n Microsoft.ContainerService
 set KUBE_NAME myFirstKube
-az acs create --name $KUBE_NAME --resource-group $KUBE_GROUP --orchestrator-type Kubernetes --dns-prefix $KUBE_NAME --generate-ssh-keys
+az aks create --resource-group $KUBE_GROUP --name $KUBE_NAME --node-count 1 --generate-ssh-keys
 ```
-Additional parameters can be found here https://docs.microsoft.com/en-us/cli/azure/acs?view=azure-cli-latest#az_acs_create
-if you have to use the given service principal (because you are not allowed to create services principals in azure ad) add the following parameters
+Additional parameters can be found by typing 
+```bash 
+az aks create
+``` 
+on the command line if you have to use the given service principal (because you are not allowed to create services principals in azure ad) add the following parameters
 ```
 --client-secret HEREBESECRET --service-principal HEREBEAPPID
+
+
+bash-4.3# az aks create
+usage: az aks create [-h] [--verbose] [--debug]
+                     [--output {json,jsonc,table,tsv}] [--query JMESPATH]
+                     --resource-group RESOURCE_GROUP_NAME --name NAME
+                     [--ssh-key-value SSH_KEY_VALUE]
+                     [--dns-name-prefix DNS_NAME_PREFIX] [--location LOCATION]
+                     [--admin-username ADMIN_USERNAME]
+                     [--kubernetes-version KUBERNETES_VERSION]
+                     [--node-vm-size NODE_VM_SIZE]
+                     [--node-osdisk-size NODE_OSDISK_SIZE]
+                     [--node-count NODE_COUNT]
+                     [--service-principal SERVICE_PRINCIPAL]
+                     [--client-secret CLIENT_SECRET]
+                     [--tags [TAGS [TAGS ...]]] [--generate-ssh-keys]
+                     [--no-wait]
 ```
 3. Export the kubectrl credentials files. 
 ```
-az acs kubernetes get-credentials --resource-group=$KUBE_GROUP --name=$KUBE_NAME
+az aks get-credentials --resource-group=$KUBE_GROUP --name=$KUBE_NAME
 ```
 
 or If you are not using the Azure Cloud Shell and don’t have the Kubernetes client kubectl, run 
 ```
-sudo az acs kubernetes install-cli
+az aks install-cli
 
 scp azureuser@$KUBE_NAMEmgmt.westeurope.cloudapp.azure.com:.kube/config $HOME/.kube/config
 ```
