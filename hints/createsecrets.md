@@ -15,9 +15,18 @@ kubectl create secret docker-registry kuberegistry --docker-server $REGISTRY_URL
 # Deploying additional secrets
 https://kubernetes.io/docs/concepts/configuration/secret/
 
-Secrets must be base64 encoded.
+Simple way to deploy secrets via command line
+```
+kubectl create secret generic mySecretName --from-literal=username=someRandomSecretValue
+```
+OR do it via yaml files  - here secrets must be base64 encoded.
 ~~~
 echo -n "someRandomSecretValue" | base64
+~~~
+
+To create an application insights secret required for the calculator enter the following with the correct key
+~~~
+kubectl create secret generic appinsightsecret --from-literal=appinsightskey=12345678
 ~~~
 
 Define secret in yaml file
