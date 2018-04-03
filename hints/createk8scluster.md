@@ -19,6 +19,7 @@ az provider register -n Microsoft.ContainerService
 set KUBE_NAME myFirstKube
 az aks create --name $KUBE_NAME --resource-group $KUBE_GROUP --node-count 3 --generate-ssh-keys --kubernetes-version 1.8.2
 ```
+on the command line if you have to use the given service principal (because you are not allowed to create services principals in azure ad) add the following parameters
 ```
 --client-secret HEREBESECRET --service-principal HEREBEAPPID
 
@@ -38,13 +39,11 @@ usage: az aks create [-h] [--verbose] [--debug]
                      [--client-secret CLIENT_SECRET]
                      [--tags [TAGS [TAGS ...]]] [--generate-ssh-keys]
                      [--no-wait]
-
+```
 3. Export the kubectrl credentials files. 
 ```
 az aks get-credentials --resource-group=$KUBE_GROUP --name=$KUBE_NAME
 ```
-
-
 4. Download kubectl for your plattform
 https://kubernetes.io/docs/tasks/tools/install-kubectl/ 
 
