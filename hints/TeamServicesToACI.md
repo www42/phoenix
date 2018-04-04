@@ -8,7 +8,7 @@ az container create --name "INSTANCENAME" --image FULLYQUALIFIEDCONTAINERIMAGE:$
 ```
 4. In real life this might look like
 ```
-az container create --name "acihelloworld" --image dmxacrmaster-microsoft.azurecr.io/acihelloworld:$(Build.BuildId) --resource-group tmprg --registry-login-server dmxacrmaster-microsoft.azurecr.io --registry-username dmxacrmasteruser --registry-password XXXXXXXXXXXXX --ip-address public --port 8080
+az container create --name "acihelloworld" --image dmxacrmaster-microsoft.azurecr.io/acihelloworld:$(Build.BuildId) --resource-group tmprg --registry-login-server dmxacrmaster-microsoft.azurecr.io --registry-username dmxacrmasteruser --registry-password XXXXXXXXXXXXX --ip-address public --port 80
 ```
 5. You can find all values for ACR in Azure Portal.
 
