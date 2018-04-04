@@ -4,7 +4,7 @@
 2.  To deploy a single container to ACI just add one task in the default environment. Use the "+" icon to add it. The task is called "Azure CLI preview". In the pipeline connect your build definition you created earlier.
 3. Provide an inline script to run the image on ACI as shown below. Replace the necessary values.
 ```
-az container create --name "INSTANCENAME" --image FULLYQUALIFIEDCONTAINERIMAGE:$(Build.BuildId) --resource-group RESOURCEGROUPNAME --registry-login-server SERVERNAME --registry-username USERNAME --registry-password PASSWORD --ip-address public --port 8080
+az container create --name "INSTANCENAME" --image FULLYQUALIFIEDCONTAINERIMAGE:$(Build.BuildId) --resource-group RESOURCEGROUPNAME --registry-login-server SERVERNAME --registry-username USERNAME --registry-password PASSWORD --ip-address public --port 80
 ```
 4. In real life this might look like
 ```
