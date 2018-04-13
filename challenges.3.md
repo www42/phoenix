@@ -17,13 +17,13 @@
 - Build the container images for frontend and backend services locally.
 - Push the images to your ACR 
 - Apply the container images in your Kubernetes cluster using the *.yml files provided 
-    - calcbackend-pod.yml
-    - calcbackend-svc.yml
-    - calcfrontend-pod.yml
-    - calcfrontend-svc.yml
+    - backend-pod.yml
+    - backend-svc.yml
+    - frontend-pod.yml
+    - frontend-svc.yml
 - Configure your application to be accessible from the internet and call the page. Use the calculation.
 
-## 2. AI
+## 2. Application Insights
 > Need help? Check hints [here :blue_book:](hints/applicationinsights.md)!
 
 In this chapter you will create an application insights resource for monitoring your application performance and health status.
@@ -70,7 +70,6 @@ In this chapter you will leverage self-healing capabilites of K8s and extend you
 - triggers when the build has finished
 - deploy your latest image created by the build definition with help of the deployment.yaml file. You can use the Azure CLI task to do this.
 - Use $(Build.BuildNumber) to apply the correct image.
-<<<<<<< HEAD
     
 
 # Bonus Challenge - Technology Shootout
@@ -81,10 +80,3 @@ Implement the solution and upgrade your application to the Go-backend without do
 - Modify your backend-service Yaml to target the new image
 - Deploy
 - Check monitoring data for performance impact
-
-
-
-​
-=======
-    
->>>>>>> 14c2a911080b1a066f2a5d124209d74dc90fc4cb

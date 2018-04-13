@@ -20,7 +20,7 @@ In this chapter you will get a basic experience in working with containers. For 
 
 
 ## 1. Containerize your app 
-- Get the code of the hello world application (git clone https://github.com/denniszielke/phoenix) locally and navigate to the folder (phoenix\apps\aci-helloworld).
+- Get the code of the hello world application (git clone https://github.com/CSA-OCP-GER/phoenix) locally and navigate to the folder (phoenix\apps\aci-helloworld).
 - Create a container image locally (you need docker running on your machine). Don't forget the trailing "." in the following line!
     ```
     docker build -t helloworld .
@@ -31,7 +31,7 @@ In this chapter you will get a basic experience in working with containers. For 
     ```
 - Run the image in a container locally on your machine. Remember to open up the correct port in your command (-p).
     ```
-    docker run -d -p 8080:8080 helloworld
+    docker run -d -p 8080:80 helloworld
     ```
 - Open the browser and navigate to the application you just started with your browser (http://localhost:8080). If you're running on a Linux VM in Azure, just run this command to avoid working with a graphical browser:
     ```
@@ -41,8 +41,16 @@ In this chapter you will get a basic experience in working with containers. For 
     ```
     cat index.html
     ```
-
-
+- Check the running processes
+```
+docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+bc4b6b155c2c        helloworld          "/bin/sh -c 'node /u…"   12 seconds ago      Up 9 seconds        0.0.0.0:8080->8080/tcp   peaceful_mccarthy
+```
+- Kill the process to clean up
+```
+docker kill bc4b6b155c2c
+```
 
 
 ## 2. Automate your build 
