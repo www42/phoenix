@@ -2,7 +2,6 @@
 https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough
 
 **Hint:** The "set KEY value" values commands work in Powershell. In Bash use KEY=value.
-Look up regions https://github.com/Azure/AKS/blob/master/preview_regions.md
 
 1. Use bash to create the resource group by using azure cloud shell (https://shell.azure.com/ )
 ```
