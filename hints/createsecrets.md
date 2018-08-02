@@ -2,14 +2,14 @@
 https://medium.com/devoops-and-universe/your-very-own-private-docker-registry-for-kubernetes-cluster-on-azure-acr-ed6c9efdeb51
 
 ```
-kubectl create secret docker-registry kuberegistry --docker-server 'myveryownregistry-on.azurecr.io' --docker-username 'username' --docker-password 'password' --docker-email 'example@example.com'
+kubectl create secret docker-registry kuberegistry --docker-server myveryownregistry-on.azurecr.io --docker-username username --docker-password password --docker-email example@example.com
 
 ```
 
 or
 
 ```
-kubectl create secret docker-registry kuberegistry --docker-server $REGISTRY_URL --docker-username $REGISTRY_NAME --docker-password $REGISTRY_PASSWORD --docker-email 'example@example.com'
+kubectl create secret docker-registry kuberegistry --docker-server $REGISTRY_URL --docker-username $REGISTRY_NAME --docker-password $REGISTRY_PASSWORD --docker-email example@example.com
 ```
 
 # Deploying additional secrets
