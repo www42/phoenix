@@ -43,11 +43,11 @@ spec:
         env: 
           - name: "ENDPOINT"
             value: "calcbackendsvc"
-          - name: "INSTRUMENTATIONKEY"
-            valueFrom:
-              secretKeyRef:
-                name: appinsightsecret
-                key: appinsightskey
+          # - name: "INSTRUMENTATIONKEY"
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name: appinsightsecret
+          #       key: appinsightskey
           - name: "PORT"
             value: "80"
 ---
@@ -94,11 +94,11 @@ spec:
             name: http         
             protocol: TCP
         env: 
-          - name: "INSTRUMENTATIONKEY"
-            valueFrom:
-              secretKeyRef:
-                name: appinsightsecret
-                key: appinsightskey
+          # - name: "INSTRUMENTATIONKEY"
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name: appinsightsecret
+          #       key: appinsightskey
           - name: "PORT"
             value: "80"
 ---
@@ -129,10 +129,10 @@ spec:
             name: http         
             protocol: TCP
         env: 
-          - name: "INSTRUMENTATIONKEY"
-            valueFrom:
-              secretKeyRef:
-                name: appinsightsecret
-                key: appinsightskey
+          # - name: "INSTRUMENTATIONKEY"
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name: appinsightsecret
+          #       key: appinsightskey
           - name: "PORT"
             value: "80"

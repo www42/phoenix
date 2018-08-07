@@ -5,7 +5,7 @@ Here's a list of things we need to set up:
 Creating resources on Azure:
 - *Resource Group* - this will be the place where we create all our Azure resources 
 - *Azure Container Registry* - here we are going to store our Docker container images
-- Optional: *Ubuntu VM for building and tagging* - we need a machine to work with Docker. If your local machine isn't set up for Docker, just start up an instance in Azure - use the Ubuntu 16.04 LTS
+- **Optional:** *Ubuntu VM for building and tagging* - we need a machine to work with Docker. If your local machine isn't set up for Docker, just start up an instance in Azure - use the Ubuntu 16.04 LTS
 
  > Need help? Check hints [here :blue_book:](hints/creatingresources.md)! 
 

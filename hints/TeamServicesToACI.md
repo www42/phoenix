@@ -10,6 +10,6 @@ az container create --name "INSTANCENAME" --image FULLYQUALIFIEDCONTAINERIMAGE:$
 ```
 az container create --name "acihelloworld" --image dmxacrmaster-microsoft.azurecr.io/acihelloworld:$(Build.BuildId) --resource-group tmprg --registry-login-server dmxacrmaster-microsoft.azurecr.io --registry-username dmxacrmasteruser --registry-password XXXXXXXXXXXXX --ip-address public --port 80
 ```
-5. You can find all values for ACR in Azure Portal.
+5. You can find all values for ACR in Azure Portal under "Access Keys".
 
 ![ACR values](images/acrvalues.jpg)

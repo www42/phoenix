@@ -1,16 +1,17 @@
 # Create Azure Container Registry secret in Kubernetes
-https://medium.com/devoops-and-universe/your-very-own-private-docker-registry-for-kubernetes-cluster-on-azure-acr-ed6c9efdeb51
 
+Create a Kubernetes secret that can be referenced whenever a Docker image must be pulled from your private registry, e.g. your Azure Container Registry
 ```
-kubectl create secret docker-registry kuberegistry --docker-server 'myveryownregistry-on.azurecr.io' --docker-username 'username' --docker-password 'password' --docker-email 'example@example.com'
+kubectl create secret docker-registry kuberegistry --docker-server myveryownregistry-on.azurecr.io --docker-username username --docker-password password --docker-email example@example.com
 
 ```
 
 or
 
 ```
-kubectl create secret docker-registry kuberegistry --docker-server $REGISTRY_URL --docker-username $REGISTRY_NAME --docker-password $REGISTRY_PASSWORD --docker-email 'example@example.com'
+kubectl create secret docker-registry kuberegistry --docker-server $REGISTRY_URL --docker-username $REGISTRY_NAME --docker-password $REGISTRY_PASSWORD --docker-email example@example.com
 ```
+Further reading: https://medium.com/devoops-and-universe/your-very-own-private-docker-registry-for-kubernetes-cluster-on-azure-acr-ed6c9efdeb51
 
 # Deploying additional secrets
 https://kubernetes.io/docs/concepts/configuration/secret/
@@ -24,12 +25,12 @@ OR do it via yaml files  - here secrets must be base64 encoded.
 echo -n "someRandomSecretValue" | base64
 ~~~
 
-To create an application insights secret required for the calculator enter the following with the correct key
+Later, we need secrets for Application Insights. To create an Application Insights secret in your Kubernetes cluster required for the sample application, enter the following with the correct instrumentation key
 ~~~
 kubectl create secret generic appinsightsecret --from-literal=appinsightskey=12345678
 ~~~
 
-Define secret in yaml file
+Or define the secret in yaml file (remember, value must be base64 encoded)
 ```
 apiVersion: v1
 kind: Secret

@@ -10,12 +10,13 @@ kubectl run nginx --image=nginx
 ```
 kubectl get pods
 ```
-3. Wrap your pod into a service 
+3. Wrap your pod into a deplyoment with service 
 ```
 kubectl expose deployment nginx --port=80
 ```
 4. See what you got
 ```
+kubectl get deployment
 kubectl get service
 ```
 5. Edit your service to be able to be accessed from the public internet
