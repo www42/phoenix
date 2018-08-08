@@ -10,7 +10,7 @@ kubectl run nginx --image=nginx
 ```
 kubectl get pods
 ```
-3. Wrap your pod into a deplyoment with service 
+3. Wrap your pod deployment with service 
 ```
 kubectl expose deployment nginx --port=80
 ```
