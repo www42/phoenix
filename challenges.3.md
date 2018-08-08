@@ -50,8 +50,8 @@ Let's configure it for self-healing.
 - Apply the replication controller yaml file *replicator.yml*.
 - This will take care of starting new instances whenever one of your pods fails. Try to kill the application again by deleting frontend pods and see if your website stays responsive.
 - Also measure the responsiveness using Application Insights. 
-    - Create a Application Instance on Azure as described [here](hints/applicationinsights.md) and get the instrumentation key
-    - Provide the AI key as an environment variable to your pods as a secret as described [here](hints/createsecrets.md) .
+    - Create a Application Insights instance on Azure as described [here](hints/applicationinsights.md) and get the instrumentation key
+    - Provide the AI key as an environment variable to your pods as a secret as described [here](hints/createsecrets.md) and redeploy the pods.
 
 
 # Fully automated VSTS YAML deployment
