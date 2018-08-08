@@ -2,14 +2,14 @@
 1. Create a file *replication.yml*
 1. Start with a file like the one found [here](https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/)
 1. Provide a name for your ReplicationController
-1. Specify the correct replica set (in our sample 2)
+1. Specify the correct replica set (--> number of pods running, in our sample 2)
 1. Modify the template section of the file
     - point to the correct container image in your registry
     ```
      containers:
 
           - name: calcfrontend
-            image: dzregistry.azurecr.io/calc/calc-frontend:latest
+            image: YOURREGISTRY.azurecr.io/calc-frontend:latest
     ``` 
     - add information about the required ports for your container
     ```

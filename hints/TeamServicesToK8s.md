@@ -1,5 +1,5 @@
 # Team Services to K8s
-1. Create a `vstsFullDeploymentToK8s.yaml` file which contains a section for a service and a section for a deployment separted by `------`.
+1. Create a `vstsFullDeploymentToK8s.yaml` file which contains a section for a service and a section for a deployment separted by `---`.
 1. You can find a sample for a service description in yaml [here](https://kubernetes.io/docs/concepts/services-networking/service/) .
 1. You can find a sample for a deployment description in yaml [here](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
 1. Modify the sections to represent the backend service. 

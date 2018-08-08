@@ -1,5 +1,4 @@
 # Kubernetes Operational InsightsChallenge
-> Need help? Check hints [here :blue_book:](hints/k8sMulti.md)!
 
 > In this chapter you will upgrade your application to use another implementation of the calculator backend written in Go. You have heard that Go is so much faster and better and want to try this out without interrupting your users. Therefore you have to do a blue green deployment with your old frontend and backend along with your new go-calc-backend. All containers are sending telemetry to Application Insights (assuming you have configured the configuration of the insights key correctly) - so you should be able to evaluate the performance of your new container relative to the old one. If it does not improve your service you should perform a rollback - all without impacting your users.
 
@@ -14,7 +13,7 @@
 - Build a container
 - Put it in your container registry
 
-If you do not want to build the go backend you can use the already built image from docker hub:
+**If you do not want to build the go backend** you can use the already built image from docker hub:
 https://hub.docker.com/r/denniszielke/go-calc-backend/
 https://hub.docker.com/r/denniszielke/js-calc-frontend/
 https://hub.docker.com/r/denniszielke/js-calc-backend/
@@ -24,11 +23,13 @@ https://hub.docker.com/r/denniszielke/js-calc-backend/
 - Deploy an ingress controller via Helm (https://github.com/kubernetes/charts/tree/master/stable/nginx-ingress)
 - Configure the routes for ingress to your application
 
+> Need help with Helm? Check hints [here :blue_book:](hints/helm.md)!
+
 ## 3. Deploy your new backend
-- Create a deployment yaml file
+- Create a deployment yaml file with and ingress resource, your pod deployments and services
+- make sure, your service definitions don't use type *LoadBalancer* as traffic from the internet will be handled by the ingress controller now
 - Make sure that the environment variables for PORT and INSTRUMENTATIONKEY are set correctly
-- Deploy the new backend into your cluster
-- Deploy a new frontend and services
+- Deploy everything into your cluster
 
 ## 4. Analyze and Improve the performance of your new backend
 ![](/img/appmap.jpg)

@@ -1,7 +1,6 @@
 # Kubernetes Multicontainer Challenge
-> Need help? Check hints [here :blue_book:](hints/k8sMulti.md)!
 
-> In this chapter you will create a multi-container appliation in Kubernetes. This is more close to real-life but makes administration a little more challenging. In reality you might want to be able to specify that mutliple containers are able to talk to each other in a defined way. You might want to make make sure certain parts of your application run in multiple instances to cover load. You might want to be able to monitor performance of your application. You might want to make sure that your system is self-healing so that faulty components are replaced automatically. For updates you might want to make sure to have zero downtime of your application. We are going to configure all of this in this section.
+> In this chapter you will create a multi-container application in Kubernetes. This is more close to real-life but makes administration a little more challenging. In reality you might want to be able to specify that mutliple containers are able to talk to each other in a defined way. You might want to make make sure certain parts of your application run in multiple instances to cover load. You might want to be able to monitor performance of your application. You might want to make sure that your system is self-healing so that faulty components are replaced automatically. For updates you might want to make sure to have zero downtime of your application. We are going to configure all of this in this section.
 
 >## Here's what you'll learn:
 >- How to write YAML files to specify a desired state of a Kubernetes object
@@ -13,6 +12,7 @@
 
 
 ## 1. Kubernetes multi container app deployment 
+> Need help? Check hints [here :blue_book:](hints/k8sMulti.md)!
 - Get the sample code for a multi container application. (Multi-Calc)
 - Build the container images for frontend and backend services locally.
 - Push the images to your ACR 
@@ -37,7 +37,12 @@ In this chapter you will create an application insights resource for monitoring 
 
 Let's see what happens if one of your pods fails.
 - Delete the frontend pod using the commandline and call the website again. 
-- You'll recognize that it will no longer work.
+```
+kubectl get pods
+kubectl delete pods/PODNAME
+```
+- You'll recognize that it will no longer work!
+
 Let's configure it for self-healing.
 > Need help? Check hints [here :blue_book:](hints/AddReplicationController.md)!
 - Create a new yaml file **replicator.yml** and configure it to take care of replication of your application frontend pods. Set the number of replicas to 2.
@@ -51,7 +56,6 @@ Let's configure it for self-healing.
 
 # Fully automated VSTS YAML deployment
 In this chapter you will leverage self-healing capabilites of K8s and extend your VSTS pipeline to trigger a deployment to your K8s cluster. Your application will have no downtime during a rolling upgrade.
-> Need help? Check hints [here :blue_book:](hints/TeamServicesToK8s.md)!
 
 ## 1. Create a yaml
 - Create a deployment file to decribe the desired state of your application including replicas of your backend service.
@@ -60,15 +64,17 @@ In this chapter you will leverage self-healing capabilites of K8s and extend you
     - the backend service is available internally only
     - the correct image is being used. 
 - Apply the deployment file manually.
+> You will find a sample for that in the *hints/yaml* folder (full_deploy.yml). But first, try for yourself ;)
 
 ## 2. Fake a failed pod
 - Check the number of backend pods. K8s will take care to keep the number of available pods as specified.
 - Give it a try and kill some pods. They will be recreated.
 
 ## 3. Automate zero downtime deployment via VSTS
+> Need help? Check hints [here :blue_book:](hints/TeamServicesToK8s.md)!
 - Now let's automate all of this. Create a VSTS release definition. Make sure it
 - triggers when the build has finished
-- deploy your latest image created by the build definition with help of the deployment.yaml file. You can use the Azure CLI task to do this.
+- deploy your latest image created by the build definition with help of the deployment.yaml file. You can use the *Kubernetes task* to do this.
 - Use $(Build.BuildNumber) to apply the correct image.
     
 
