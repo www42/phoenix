@@ -7,7 +7,6 @@
 > - Understand the concept of pods and services and how they come together
 > - Get in touch with Yaml files to specify a desired state for a Kubernetes object
 
-
 ## 1. Create a Kubernetes cluster on Azure Kubernetes Service 
 - Set up your Kuberenetes cluster using Azure Kuberenetes Service.
 > Need help? Check hints [here :blue_book:](hints/createk8scluster.md)!
@@ -24,13 +23,13 @@ The deployment will take some time (~20 min).
 
 ## 3. Kubernetes discovery
 - Open the K8s portal for a graphical interface. Run `kubectl proxy`then open up a browser an navigate to http://localhost:8001/ui or http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/pod?namespace=default
-- **OPTIONAL:** If you want to work with namespaces. Create your own namespace 'dennisspace' with 
+- If you want to work with namespaces. Create your own namespace 'mynewnamespace' with 
 ```
-kubectl create ns dennisspace
+kubectl create ns mynewnamespace
 ```
-and apply this postfix to your  kubectl commands like 
+and apply this postfix to your kubectl commands like 
 ```
-kubectl get pods -n dennisspace
+kubectl get pods -n mynewnamespace
 ```
 
 - Familiarize yourself with the following commands on commandline, eg.
