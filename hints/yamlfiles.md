@@ -1,6 +1,6 @@
 # Kubernetes yaml file deployments
 
-## Yaml file definition
+## YAML file definition
 https://kubernetes.io/docs/user-guide/walkthrough/
 
 The simplest pod definition describes the deployment of a single container. For example, an nginx web server pod might be defined as such:
@@ -32,7 +32,7 @@ metadata:
 spec:
   containers:
   - name: nginx
-    image: nginx:1.7.9
+    image: nginx:latest
     ports:
     - containerPort: 80
     env:       
