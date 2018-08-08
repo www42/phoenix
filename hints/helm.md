@@ -1,31 +1,19 @@
 # Using Helm
 
-## Installing helm and tiller
 https://github.com/kubernetes/helm
+## Installing Helm and Tiller
+
+### Install Helm
+
 https://docs.microsoft.com/en-us/azure/aks/kubernetes-helm
+https://github.com/helm/helm/blob/master/docs/install.md
 
-Install helm
-```
-wget https://storage.googleapis.com/kubernetes-helm/helm-v2.7.2-linux-amd64.tar.gz
-tar -zxvf helm-v2.7.2-linux-amd64.tar.gz
-sudo mv linux-amd64/helm /usr/local/bin/helm
-```
+### Install/configure Helm and Tiller
 
-Install tiller and upgrade tiller
 ```
-helm
-
-helm init
-echo "Upgrading tiller..."
-helm init --upgrade
-echo "Upgrading chart repo..."
+helm init --service-account tiller
+echo "Updating chart repo..."
 helm repo update
-```
-
-If you are on 2.7.2 and want explicitly up/downgrade to 2.6.1:
-```
-export TILLER_TAG=v2.6.1
-kubectl --namespace=kube-system set image deployments/tiller-deploy tiller=gcr.io/kubernetes-helm/tiller:$TILLER_TAG
 ```
 
 See all pods (including tiller)
@@ -33,17 +21,22 @@ See all pods (including tiller)
 kubectl get pods --namespace kube-system
 ```
 
-reinstall or delte tiller
+Test Helm by installing MySQL (optional)
+```
+helm install stable/mysql
+```
+
+Reinstall or delete Tiller
 ```
 helm reset
 ```
 
-helm install stable/mysql
-https://kubeapps.com/
+> You can find more Helm charts via https://kubeapps.com/
 
-## Create your own helm chart
+## Create your own helm chart (optional)
 
 1. Create using draft
+
 Go to app folder and launch draft
 https://github.com/Azure/draft 
 ```
@@ -75,23 +68,23 @@ kubectl create secret generic appinsightsecret --from-literal=appinsightskey=$AP
 helm install multicalchart --name=c3 --set frontendReplicaCount=1 --set backendReplicaCount=1 --set image.frontendTag=redis --set image.backendTag=redis
 ```
 
-verify
+6. verify
 ```
 helm get values c3
 ```
 
-6. Change config and perform an upgrade
+7. Change config and perform an upgrade
 ```
 helm upgrade --set backendReplicaCount=4 c3 multicalchart
 ```
 
-7. See rollout history
+8. See rollout history
 ```
 helm history c3
 helm rollback c3 1
 ```
 
-6. Cleanup
+9. Cleanup
 ```
 helm delete c3 --purge
 ```
