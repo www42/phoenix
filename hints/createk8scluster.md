@@ -42,6 +42,8 @@ Make sure to use the corresponding version for your Kubernetes cluster version. 
 az aks install-cli
 ```
 
+> Need a cheat sheet? Get it here: <https://kubernetes.io/docs/reference/kubectl/cheatsheet/>
+
 5. Check that everything is running ok
 ```
 kubectl cluster-info
