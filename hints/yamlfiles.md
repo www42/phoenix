@@ -19,7 +19,7 @@ spec:
 ```
 
 ## liveness probes and variables
-https://kubernetes-v1-4.github.io/docs/user-guide/liveness/
+https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
 
 Ensure that health checks are performed against your instance
 
