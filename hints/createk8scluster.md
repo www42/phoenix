@@ -2,9 +2,15 @@
 
 **Hint:** The "set KEY value" values commands work in Powershell. In Bash use KEY=value.
 
+0. Choose a region for your cluster where AKS is supported
+
+```
+az provider list --query "[?namespace=='Microsoft.ContainerService'].resourceTypes[] | [?resourceType=='managedClusters'].locations[]" -o tsv
+```
+
 1. Use bash to create the resource group. You can also use [Azure Cloud Shell](https://shell.azure.com/) for that task.
 ```
-LOCATION=eastus
+LOCATION=<your_region>
 KUBE_GROUP=myKubeRG
 KUBE_NAME=myFirstKube
 az group create -n $KUBE_GROUP -l $LOCATION
