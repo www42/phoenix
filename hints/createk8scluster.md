@@ -21,7 +21,7 @@ https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-deploy-cluster
 ```
 OPTIONAL (when errors occur): az provider register -n Microsoft.ContainerService
 set KUBE_NAME myFirstKube
-az aks create --name $KUBE_NAME --resource-group $KUBE_GROUP --node-count 3 --generate-ssh-keys --kubernetes-version 1.10.6
+az aks create --name $KUBE_NAME --resource-group $KUBE_GROUP --node-count 3 --generate-ssh-keys --kubernetes-version 1.10.8
 ```
 on the command line, if you have to use the given service principal (because you are not allowed to create services principals in Azure AD), add the following parameters
 ```
