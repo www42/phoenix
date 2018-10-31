@@ -10,5 +10,5 @@ For usage of images of your private ACR also specify
  
 Sample: 
 ```
-az container create --name mycontainer --image IMAGENAME --resource-group myResourceGroup --ip-address public --port 8080
+az container create --name mycontainer --image IMAGENAME --resource-group myResourceGroup --ip-address public --port 80
 ```
