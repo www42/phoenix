@@ -19,6 +19,6 @@ Team Services Configuration to build & push a docker image to your Azure Contain
     - "Docker" task to push the image
     ![](images/vstshelloworldpushimage.jpg)
 
-6. **Later** you will need an additional step to move a "*.yaml" file to an artifacts folder. Use the "Publish Build Artifacts" Task. This will look like shown below.
+6. **Later (you should skip this step in Challenge-1!!)** you will need an additional step to move a "*.yaml" file to an artifacts folder. Use the "Publish Build Artifacts" Task. This will look like shown below.
 **Hint:** Make sure you reference your yaml file from the correct location! 
 ![](images/vstsdropyaml.jpg)
