@@ -1,0 +1,43 @@
+az provider list --query "[?namespace=='Microsoft.ContainerService'].resourceTypes[] | [?resourceType=='managedClusters'].locations[]" -o tsv
+LOCATION=westeurope
+KUBE_GROUP=myKube-RG
+KUBE_NAME=ber-aks-basic
+az group create -n $KUBE_GROUP -l $LOCATION
+
+set KUBE_NAME ber-aks-basic
+az aks create --name $KUBE_NAME --resource-group $KUBE_GROUP --node-count 3 --generate-ssh-keys --kubernetes-version 1.12.7
+
+az aks list -o table
+az aks get-credentials --resource-group=$KUBE_GROUP --name=$KUBE_NAME
+
+cat .kube/config
+
+az aks get-credentials --resource-group=$KUBE_GROUP --name=$KUBE_NAME -f config
+az aks get-credentials --resource-group=$KUBE_GROUP --name=$KUBE_NAME --file foo
+cat ./config
+
+# Wohin geht das?
+download config
+
+cd $HOME
+dir .kube/
+cat .kube/config
+
+kubectl cluster-info
+kubectl proxy
+
+kubectl get pods
+kubectl run nginx --image=nginx
+kubectl expose deployment nginx --port=80
+kubectl get deployment
+kubectl get service
+kubectl edit service/nginx
+
+# --> LoadBalancer
+
+kubectl get service -w
+
+kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
+az aks browse --name ber-aks-basic --resource-group myKube-RG
+# Dashboard funktioniert :-)
+# Ist das ein SP?

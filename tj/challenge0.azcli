@@ -1,0 +1,33 @@
+# Challenge 0: Create Resources
+az --version
+az account list
+
+# Variables ---------------------
+location='westeurope'
+rg='AKS-Basic-RG'
+acr='aksbasic'
+
+# -------------------------------
+
+# Resource Group
+az group list -o table
+az group create --name $rg --location $location 
+
+# Registry
+# https://docs.microsoft.com/en-us/cli/azure/acr?view=azure-cli-latest#az-acr-create
+az acr list -o table
+
+az acr create \
+            --name $acr \
+            --sku Basic \
+            --admin-enabled true \
+            --location $location \
+            --resource-group $rg
+
+az acr show --name $acr
+loginServer=$(az acr show --name $acr --query 'loginServer' -o tsv)
+echo $loginServer
+
+username=$acr
+password='oOEkfCNcju06dtYgQQRue3GyynXt+ygD'
+az acr login --name $acr --username $username --password $password
